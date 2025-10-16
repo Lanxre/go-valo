@@ -6,12 +6,11 @@ import (
 )
 
 func (h *httpClient) GetContent(options ...map[string]string) (content.Content, error) {
-    data, err := h.GetRaw("/v1/content", options...)
-    
-	if err != nil {
-        return content.Content{}, err
-    }
+	data, err := h.GetRaw("/v1/content", options...)
 
-    
-    return internal.ParseJSON[content.Content](data)
+	if err != nil {
+		return content.Content{}, err
+	}
+
+	return internal.ParseJSON[content.Content](data)
 }
