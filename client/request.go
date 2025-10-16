@@ -8,25 +8,12 @@ import (
 
 	"github.com/lanxre/go-valo/errors"
 	"github.com/lanxre/go-valo/internal"
-	"github.com/lanxre/go-valo/types/henrik_responses/accounts"
 )
-
-
 
 type httpClient struct {
 	henrikApiBaseURL string
 	henrikApiKey     string
 	httpClient       *http.Client
-}
-
-func (h *httpClient) GetAccountV1(options ...map[string]string) (accounts.AccountV1, error) {
-    data, err := h.GetRaw("/v1/account/{name}/{tag}", options...)
-    
-	if err != nil {
-        return accounts.AccountV1{}, err
-    }
-    
-    return internal.ParseJSON[accounts.AccountV1](data)
 }
 
 func (h *httpClient) GetRaw(path string, options ...map[string]string) ([]byte, error) {
@@ -51,12 +38,10 @@ func (h *httpClient) GetRawWithContext(ctx context.Context, path string, options
         url += "?" + internal.BuildQueryString(queryParams)
     }
 
-
     req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
     if err != nil {
         return nil, fmt.Errorf("failed to create request: %w", err)
     }
-
     req.Header.Set("Authorization", h.henrikApiKey)
     req.Header.Set("accept", "application/json")
 	
