@@ -16,7 +16,7 @@ func AccountExample() {
 	henrikClient := client.NewHenrikClient(cfg)
 	data, err := henrikClient.GetAccountV1(map[string]string{
 		"name": "lanore",
-		"tag": "evil",
+		"tag":  "evil",
 	})
 
 	if err != nil {

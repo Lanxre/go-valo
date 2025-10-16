@@ -26,7 +26,7 @@ func (h *httpClient) GetMatchesV4(options ...map[string]string) (matchlist.Match
 }
 
 func (h *httpClient) GetMatchesByPUUIDV3(options ...map[string]string) (matchlist.MatchesV3, error) {
-	data, err := h.GetRaw("/v3/matches/{region}/{puuid}", options...)
+	data, err := h.GetRaw("/v3/by-puuid/matches/{region}/{puuid}", options...)
 
 	if err != nil {
 		return matchlist.MatchesV3{}, err
@@ -36,7 +36,7 @@ func (h *httpClient) GetMatchesByPUUIDV3(options ...map[string]string) (matchlis
 }
 
 func (h *httpClient) GetMatchesByPUUIDV4(options ...map[string]string) (matchlist.MatchesV4, error) {
-	data, err := h.GetRaw("/v4/matches/{region}/{platform}/{puuid}", options...)
+	data, err := h.GetRaw("/v4/by-puuid/matches/{region}/{platform}/{puuid}", options...)
 
 	if err != nil {
 		return matchlist.MatchesV4{}, err

@@ -6,7 +6,12 @@ import (
 	"github.com/lanxre/go-valo/types/henrik_responses/content"
 	"github.com/lanxre/go-valo/types/henrik_responses/esports"
 	"github.com/lanxre/go-valo/types/henrik_responses/leaderboard"
+	"github.com/lanxre/go-valo/types/henrik_responses/match"
 	"github.com/lanxre/go-valo/types/henrik_responses/matchlist"
+	"github.com/lanxre/go-valo/types/henrik_responses/mmr"
+	"github.com/lanxre/go-valo/types/henrik_responses/mmr_history"
+	"github.com/lanxre/go-valo/types/henrik_responses/website"
+    "github.com/lanxre/go-valo/types/henrik_responses/stored_matches"
 )
 
 type Client interface {
@@ -38,4 +43,31 @@ type HenrikClient interface {
 	GetMatchesV4(options ...map[string]string) (matchlist.MatchesV4, error)
 	GetMatchesByPUUIDV3(options ...map[string]string) (matchlist.MatchesV3, error)
 	GetMatchesByPUUIDV4(options ...map[string]string) (matchlist.MatchesV4, error)
+
+	// match methods
+	GetMatchV2(options ...map[string]string) (match.MatchV2, error)
+	GetMatchV4(options ...map[string]string) (match.MatchV4, error)
+
+	// mmr history methods
+	GetMMRHistoryV1(options ...map[string]string) (mmrhistory.MMRHistoryV1, error)
+	GetMMRHistoryByPUUIDV1(options ...map[string]string) (mmrhistory.MMRHistoryV1, error)
+	GetMMRHistoryV2(options ...map[string]string) (mmrhistory.MMRHistoryV2, error)
+	GetMMRHistoryByPUUIDV2(options ...map[string]string) (mmrhistory.MMRHistoryV2, error)
+
+	// mmr methods
+	GetMMRV2(options ...map[string]string) (mmr.MMRV2, error)
+	GetMMRByPUUIDV2(options ...map[string]string) (mmr.MMRV2, error)
+	GetMMRV3(options ...map[string]string) (mmr.MMRV3, error)
+	GetMMRByPUUIDV3(options ...map[string]string) (mmr.MMRV3, error)
+
+	// stored data methods
+	GetStoredMatchesV1(options ...map[string]string) (storedmatches.StoredMatchesV1, error)
+	GetStoredMatchesPUUIDV1(options ...map[string]string) (storedmatches.StoredMatchesV1, error)
+	GetStoredMMRHistoryV1(options ...map[string]string) (storedmatches.StoredMMRHistoryV1, error)
+	GetStoredMMRHistoryV2(options ...map[string]string) (storedmatches.StoredMMRHistoryV2, error)
+	GetStoredMMRHistoryByPUUIDV1(options ...map[string]string) (storedmatches.StoredMMRHistoryV1, error)
+	GetStoredMMRHistoryByPUUIDV2(options ...map[string]string) (storedmatches.StoredMMRHistoryV2, error)
+
+	// website method
+	GetWebsiteNews(options ...map[string]string) (website.WebsiteNews, error)
 }
