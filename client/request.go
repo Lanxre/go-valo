@@ -23,14 +23,9 @@ func (h *httpClient) GetRaw(path string, options ...map[string]string) ([]byte, 
 func (h *httpClient) GetRawWithContext(ctx context.Context, path string, options ...map[string]string) ([]byte, error) {
 	url := h.henrikApiBaseURL + path
 
-	if len(options) > 0 && len(options[0]) > 0 {
-		pathParams := options[0]
-		url = internal.ReplaceNamedPathParams(url, pathParams)
-	}
-
 	var queryParams map[string]string
-	if len(options) > 1 && len(options[1]) > 0 {
-		queryParams = options[1]
+	if len(options) > 1 && len(options[0]) > 0 {
+		queryParams = options[0]
 	}
 
 	if len(queryParams) > 0 {

@@ -1,4 +1,4 @@
-package internal
+package enums
 
 type Region string
 
