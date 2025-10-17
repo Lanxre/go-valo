@@ -8,6 +8,8 @@ import (
 )
 
 func NewHenrikClient(config types.Config) types.HenrikClient {
+	config.HenrikBaseURL = "https://api.henrikdev.xyz/valorant"
+
 	if config.HTTPClient == nil {
 		config.HTTPClient = &http.Client{
 			Timeout: config.Timeout,
