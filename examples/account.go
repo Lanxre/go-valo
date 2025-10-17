@@ -9,7 +9,6 @@ import (
 
 func AccountExample() {
 	cfg := types.Config{
-		HenrikBaseURL: "https://api.henrikdev.xyz/valorant",
 		HenrikAPIKey:  "<You token here>",
 	}
 
